@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="SlackDescBuild" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="default">
+				<Option output="SlackDescBuild" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-D__WXDEBUG__" />
+					<Add option="-DWXUSINGDLL" />
+					<Add directory="$(#WX)\lib\gcc_dll\mswud" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="$(#WX)\lib\gcc_dll\mswud" />
+				</ResourceCompiler>
+				<Linker>
+					<Add library="wxmsw28ud" />
+					<Add directory="$(#WX)\lib\gcc_dll" />
+				</Linker>
+			</Target>
+			<Target title="release">
+				<Option output="SlackDescBuild" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="$(#WX)\lib\gcc_dll\mswu" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="$(#WX)\lib\gcc_dll\mswu" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-static" />
+					<Add library="wxmsw28u_liuyug" />
+					<Add library="comctl32" />
+					<Add library="ole32" />
+					<Add library="uuid" />
+					<Add library="wxpng" />
+					<Add library="wxjpeg" />
+					<Add library="wxtiff" />
+					<Add library="wxzlib" />
+					<Add library="oleaut32" />
+					<Add directory="$(#WX)\lib\gcc_dll" />
+				</Linker>
+			</Target>
+			<Target title="release_share">
+				<Option output="SlackDescBuild" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wall" />
+					<Add option="-DWXUSINGDLL" />
+					<Add directory="$(#WX.lib)\gcc_dll\mswu" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="wxmsw28u" />
+					<Add directory="$(#WX.lib)\gcc_dll" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-pipe" />
+			<Add option="-mthreads" />
+			<Add option="-fmessage-length=0" />
+			<Add option="-fexceptions" />
+			<Add option='-include &quot;wx_pch.h&quot;' />
+			<Add option="-Winvalid-pch" />
+			<Add option="-DUSE_PCH" />
+			<Add option="-D__GNUWIN32__" />
+			<Add option="-D__WXMSW__" />
+			<Add option="-DHAVE_W32API_H" />
+			<Add option="-DwxUSE_UNICODE" />
+			<Add directory="$(#WX)\include" />
+			<Add directory="$(#WX)\contrib\include" />
+		</Compiler>
+		<ResourceCompiler>
+			<Add directory="$(#WX)\include" />
+		</ResourceCompiler>
+		<Unit filename="app.cpp" />
+		<Unit filename="app.h" />
+		<Unit filename="image\icon.xpm" />
+		<Unit filename="mainframe.cpp" />
+		<Unit filename="mainframe.h" />
+		<Unit filename="resource.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="sharedata.cpp" />
+		<Unit filename="sharedata.h" />
+		<Unit filename="slackdescdialog.cpp" />
+		<Unit filename="slackdescdialog.h" />
+		<Unit filename="version.h" />
+		<Unit filename="wx_pch.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="wxsmith\CSlackDescDialog.wxs" />
+		<Unit filename="wxsmith\MainFrame.wxs" />
+		<Extensions>
+			<code_completion />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="app.cpp" main="MainFrame" init_handlers="necessary" language="CPP" />
+				<resources>
+					<wxFrame wxs="wxsmith/MainFrame.wxs" src="mainframe.cpp" hdr="mainframe.h" name="MainFrame" language="CPP" />
+					<wxDialog wxs="wxsmith/CSlackDescDialog.wxs" src="slackdescdialog.cpp" hdr="slackdescdialog.h" name="CSlackDescDialog" language="CPP" />
+				</resources>
+			</wxsmith>
+			<envvars />
+			<debugger />
+			<AutoVersioning>
+				<Scheme minor_max="10" build_max="0" rev_max="0" rev_rand_max="10" build_times_to_increment_minor="100" />
+				<Settings autoincrement="1" date_declarations="1" do_auto_increment="0" ask_to_increment="0" language="C++" svn="0" svn_directory="" header_path="version.h" />
+				<Changes_Log show_changes_editor="0" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
+			</AutoVersioning>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

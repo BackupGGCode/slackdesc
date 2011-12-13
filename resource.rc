@@ -1,0 +1,4 @@
+aaaa ICON "image/favicon.ico"
+
+#include "wx/msw/wx.rc"
+
