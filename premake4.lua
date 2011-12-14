@@ -1,14 +1,21 @@
 solution "SlackDescBuilder"
-	location ("build/" .. _ACTION )	
-	dofile "../premake4/common.lua"
-	dofile "../premake4/wxWidget.lua"
 	
+configurations { "release","debug" }
+configuration { "release" }
+	defines { "NDEBUG" }
+	flags { "Optimize" }
+configuration { "debug" }
+	defines {"DEBUG","_DEBUG"}
+	flags { "Symbols","ExtraWarnings"}	
+
 project "SlackDescBuilder"
 	kind "WindowedApp"
 	language "C++"
 	files { "*.h", "*.cpp"}
-	targetdir "bin"
 	configuration "windows" 
 		files{"*.rc"}
-		links {wxWidgetLibs}
+		links {"wxmsw28u"}
+	configuration {"linux"}
+		buildoptions { "`wx-config --cxxflags`","`pkg-config --cflags gtk+-2.0`" }
+		linkoptions { "`wx-config --libs`","`pkg-config --libs gtk+-2.0`" }
 

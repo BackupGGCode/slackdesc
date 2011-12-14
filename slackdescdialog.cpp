@@ -43,10 +43,12 @@ CSlackDescDialog::CSlackDescDialog(wxWindow* parent,wxWindowID id)
 	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&CSlackDescDialog::OnSaveClick);
 	Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&CSlackDescDialog::OnCloseClick);
 	//*)
-	wxFont thisFont = wxSystemSettings::GetFont(wxSYS_ANSI_FIXED_FONT);
-	if ( !thisFont.Ok() ) thisFont = wxSystemSettings::GetFont(wxSYS_OEM_FIXED_FONT);
-#ifndef __WXMSW__
-	thisFont.SetFaceName(_T("DejaVu Sans Mono"));
+
+	wxFont thisFont;
+#ifdef __WXMSW__
+	thisFont  = wxSystemSettings::GetFont(wxSYS_ANSI_FIXED_FONT);
+#else
+	thisFont.SetFaceName(_T("Monospace"));
 #endif
 	//SetFont(thisFont);
 	slackdesc->SetFont(thisFont);

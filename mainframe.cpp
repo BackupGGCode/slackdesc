@@ -98,8 +98,12 @@ MainFrame::MainFrame(wxLocale* locale,wxWindow* parent,wxWindowID id)
 	Connect(ID_BUTTON_ABOUT,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&MainFrame::OnbtnAboutClick);
 	Connect(wxID_CANCEL,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&MainFrame::OnQuit);
 	//*)
-	wxFont thisFont = wxSystemSettings::GetFont(wxSYS_ANSI_FIXED_FONT);
-	if ( !thisFont.Ok() ) thisFont = wxSystemSettings::GetFont(wxSYS_OEM_FIXED_FONT);
+	wxFont thisFont ;
+#ifdef __WXMSW__
+	thisFont = wxSystemSettings::GetFont(wxSYS_ANSI_FIXED_FONT);
+#else
+        thisFont.SetFaceName(wxT("Monospace"));
+#endif
 
 	//SetFont(thisFont);
 	ruler->SetFont(thisFont);
